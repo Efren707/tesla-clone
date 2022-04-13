@@ -23,6 +23,8 @@ function Header() {
           <a href="#" key={idx}>{car}</a>
 
         )}
+        <a href="#">Solar Roof</a>
+        <a href="#">Solar Panels</a>
       </Menu>
 
       <RightMenu>
