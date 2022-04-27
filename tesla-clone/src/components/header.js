@@ -10,13 +10,14 @@ function Header() {
   const [burgerStatus, setBurgerStatus] = useState(false);
   const cars = useSelector(selectCars);
   
-  console.log(cars)
-  
   return (
     <Container>
-      <a>
-        <img src="/images/logo.svg" />
-      </a>
+
+      <Logo>
+        <a>
+          <img src="/images/logo.svg" />
+        </a>
+      </Logo>
 
       <Menu>
         {cars && cars.map((car, idx) => 
@@ -29,7 +30,7 @@ function Header() {
 
       <RightMenu>
         <a href="#">Shop</a>
-        <a href="#">Tesla Account</a>
+        <a href="#">Account</a>
         <CustomMenu onClick={() => setBurgerStatus(true)}/>
       </RightMenu>
 
@@ -68,6 +69,15 @@ const Container = styled.div`
   left: 0;
   right: 0;
   z-index: 1;
+`
+
+const Logo = styled.div`
+  cursor: pointer;
+
+  img {
+    height: 16px;
+    width: 130px;
+  }
 `
 
 const Menu = styled.div`
@@ -123,7 +133,6 @@ const BurgerNav = styled.ul`
 
     a {
       font-weight: 600;
-
     }
   }
 `
