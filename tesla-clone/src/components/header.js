@@ -31,7 +31,7 @@ function Header() {
       <RightMenu>
         <a href="#">Shop</a>
         <a href="#">Account</a>
-        <CustomMenu onClick={() => setBurgerStatus(true)}/>
+        <a href="#" onClick={() => setBurgerStatus(true)}>Menu</a>
       </RightMenu>
 
       <BurgerNav show={burgerStatus}>
@@ -39,10 +39,12 @@ function Header() {
         <CloseWrapper>
           <CustomClose onClick={() => setBurgerStatus(false)}/>
         </CloseWrapper>
+
         {cars && cars.map((car, idx) => 
           <li key={idx}><a href="#">{car}</a></li>
 
         )}
+        
         <li><a href="#">Existing Inventory</a></li>
         <li><a href="#">Used Inventory</a></li>
         <li><a href="#">Trade-in</a></li>
@@ -59,21 +61,29 @@ function Header() {
 export default Header
 
 const Container = styled.div`
-  min-height: 60px;
+  height: 60px;
+  width: 100%;
   position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 40px;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+
+  a {
+    &:hover {
+      background-color: lightgrey;
+    }
+  }
 `
 
 const Logo = styled.div`
   cursor: pointer;
-
   img {
     height: 16px;
     width: 130px;
@@ -82,34 +92,30 @@ const Logo = styled.div`
 
 const Menu = styled.div`
   display: flex;
+  width: 600px;
   align-items: center;
-  flex: 1;
-  justify-content: center;
+  justify-content: space-between;
+  
   a {
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 500;
     padding: 0 10px;
     flex-wrap: nowrap;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 `
 
 const RightMenu = styled.div`
   display: flex;
+  width: 230px;
+  justify-content: space-between;
   align-items: center;
-  a {
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-right: 10px;
-  }
-`
 
-const CustomMenu = styled(MenuIcon)`
-  cursor: pointer;
-  padding-bottom: 3px;
+  a {
+    font-weight: 500;
+  }
 `
 
 const BurgerNav = styled.ul`
@@ -144,5 +150,4 @@ const CloseWrapper = styled.div`
 
 const CustomClose = styled(CloseIcon)`
   cursor: pointer;
-
 `

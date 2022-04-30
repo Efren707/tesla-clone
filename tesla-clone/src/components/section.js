@@ -7,10 +7,8 @@ function section({title, description, backgroundImg, leftBtnText, rightBtnText})
         <Wrap bgImage={backgroundImg}>
             <Fade bottom>
             <ItemText>
-
                 <h1>{title}</h1>
                 <p>{description}</p>
-
             </ItemText>
 
             </Fade>
@@ -56,6 +54,11 @@ const Wrap = styled.div`
 const ItemText = styled.div`
     padding-top: 15vh;
     text-align: center;
+
+    h1 {
+        font-size: 40px;
+        padding-bottom: 10px;
+    }
 `
 
 const ButtonGroup = styled.div`
