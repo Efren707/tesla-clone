@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
+import LanguageIcon from '@material-ui/icons/Language';
 import {selectCars} from '../features/car/carSlice';
 import {useSelector} from 'react-redux';
 
 function Header() {
 
-  const [burgerStatus, setBurgerStatus] = useState(false);
+  const [dropStatus, setDropStatus] = useState(false);
   const cars = useSelector(selectCars);
   
   return (
@@ -28,28 +29,38 @@ function Header() {
       <RightMenu>
         <a href="#">Shop</a>
         <a href="#">Account</a>
-        <a href="#" onClick={() => setBurgerStatus(true)}>Menu</a>
+        <a href="#" onClick={() => setDropStatus(true)}>Menu</a>
       </RightMenu>
 
-      <BurgerNav show={burgerStatus}>
+      <DropdownNav show={dropStatus}>
         
         <CloseWrapper>
-          <CustomClose onClick={() => setBurgerStatus(false)}/>
+          <CustomClose onClick={() => setDropStatus(false)}/>
         </CloseWrapper>
-
-        {cars && cars.map((car, idx) => 
-          <li key={idx}><a href="#">{car}</a></li>
-
-        )}
         
-        <li><a href="#">Existing Inventory</a></li>
-        <li><a href="#">Used Inventory</a></li>
-        <li><a href="#">Trade-in</a></li>
-        <li><a href="#">Cybertruck Inventory</a></li>
-        <li><a href="#">Roadster</a></li>
-        <li><a href="#">Semi</a></li>
-        <li><a href="#">Charging Stations</a></li>
-      </BurgerNav>
+        <DropdownList>
+          <li>Existing Inventory</li>
+          <li>Used Inventory</li>
+          <li>Trade-in</li>
+          <li>Test Drive</li>
+          <li>Insurance</li>
+          <li>Cybertruck</li>
+          <li>Roadster</li>
+          <li>Semi</li>
+          <li>Charging</li>
+          <li>Powerwall</li>
+          <li>Commercial Energy</li>
+          <li>Utilities</li>
+          <li>Find Us</li>
+          <li>Support</li>
+          <li>Investor Relations</li>
+          <Globe>
+            <GlobeImg/> 
+            <GlobeText>United States <span>English</span></GlobeText>
+          </Globe>
+        </DropdownList>
+
+      </DropdownNav>
 
     </Container>
   )
@@ -93,10 +104,10 @@ const Menu = styled.div`
     flex-wrap: nowrap;
     border-radius: 12px;
     background-color: transparent;
-    transition: ease-in-out 0.35s;
+    transition: ease-in-out 0.45s;
     
     &:hover {
-      background-color: rgba(80, 80, 80, 0.1);
+      background-color: rgba(80, 80, 80, 0.2);
     }
   }
 
@@ -116,7 +127,6 @@ const RightMenu = styled.div`
     padding: 8px 15px;
     flex-wrap: nowrap;
     border-radius: 12px;
-
     transition: color .33s ease,background-color .33s ease;
     
     &:hover {
@@ -125,7 +135,7 @@ const RightMenu = styled.div`
   }
 `
 
-const BurgerNav = styled.ul`
+const DropdownNav = styled.ul`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -140,12 +150,51 @@ const BurgerNav = styled.ul`
   text-align: left;
   transform: ${props => props.show ? 'translateX(0)' : 'translateX(100%)' };
   transition: transform 0.5s;
-  li {
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
 
-    a {
-      font-weight: 600;
+  li {
+    margin: 5px;
+    padding: 10px 25px;
+    border-radius: 12px;
+    transition: color .33s ease,background-color .33s ease;
+    font-weight: 500;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: rgba(80, 80, 80, 0.1);
+    }
+  }
+
+`
+
+const DropdownList = styled.div`
+
+`
+
+const Globe = styled.li`
+  display: flex;
+`
+
+const GlobeImg = styled(LanguageIcon)`
+  height: 15px;
+`
+
+const GlobeText = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px; 
+  padding-top: 3px;
+
+  span {
+    padding-top: 3px;
+    color: gray;
+    font-size: 12px;
+    transition: 0.5s;
+
+    &:hover {
+      color: #000;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 3px;
     }
   }
 `
