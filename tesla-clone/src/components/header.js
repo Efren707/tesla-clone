@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import {selectCars} from '../features/car/carSlice';
 import {useSelector} from 'react-redux';
@@ -14,9 +13,7 @@ function Header() {
     <Container>
 
       <Logo>
-        <a>
-          <img src="/images/logo.svg" />
-        </a>
+        <img src="/images/logo.svg" />
       </Logo>
 
       <Menu>
@@ -74,12 +71,6 @@ const Container = styled.div`
   z-index: 1;
   font-size: 14px;
   letter-spacing: 0.7px;
-
-  a {
-    &:hover {
-      background-color: lightgrey;
-    }
-  }
 `
 
 const Logo = styled.div`
@@ -92,14 +83,21 @@ const Logo = styled.div`
 
 const Menu = styled.div`
   display: flex;
-  width: 600px;
+  width: 650px;
   align-items: center;
   justify-content: space-between;
   
   a {
     font-weight: 500;
-    padding: 0 10px;
+    padding: 8px 15px;
     flex-wrap: nowrap;
+    border-radius: 12px;
+    background-color: transparent;
+    transition: ease-in-out 0.35s;
+    
+    &:hover {
+      background-color: rgba(80, 80, 80, 0.1);
+    }
   }
 
   @media (max-width: 1200px) {
@@ -115,6 +113,15 @@ const RightMenu = styled.div`
 
   a {
     font-weight: 500;
+    padding: 8px 15px;
+    flex-wrap: nowrap;
+    border-radius: 12px;
+
+    transition: color .33s ease,background-color .33s ease;
+    
+    &:hover {
+      background-color: rgba(80, 80, 80, 0.1);
+    }
   }
 `
 

@@ -3,12 +3,19 @@ import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 
 function section({title, description, backgroundImg, leftBtnText, rightBtnText}) {
+
+    let descriptionLink;
+
+    if(description && description === "Order Online for ") {
+        descriptionLink = "Touchless delivery";
+    }
+
     return (
         <Wrap bgImage={backgroundImg}>
             <Fade bottom>
             <ItemText>
                 <h1>{title}</h1>
-                <p>{description}</p>
+                <p>{description} <span>{descriptionLink}</span></p>
             </ItemText>
 
             </Fade>
@@ -56,8 +63,21 @@ const ItemText = styled.div`
     text-align: center;
 
     h1 {
-        font-size: 40px;
+        font-weight: 500;
+        font-size: 45px;
         padding-bottom: 10px;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    span {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+        cursor: pointer;
     }
 `
 
