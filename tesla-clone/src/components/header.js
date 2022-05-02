@@ -2,26 +2,25 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
 import LanguageIcon from '@material-ui/icons/Language';
-import {selectCars} from '../features/car/carSlice';
-import {useSelector} from 'react-redux';
 
 function Header() {
 
   const [dropStatus, setDropStatus] = useState(false);
-  const cars = useSelector(selectCars);
   
   return (
     <Container>
 
       <Logo>
-        <img src="/images/logo.svg" />
+        <a href="/">
+          <img src="/images/logo.svg" />
+        </a>
       </Logo>
 
       <Menu>
-        {cars && cars.map((car, idx) => 
-          <a href="#" key={idx}>{car}</a>
-
-        )}
+        <a href="models" >Model S</a>
+        <a href="model3" >Model 3</a>
+        <a href="#" >Model X</a>
+        <a href="#" >Model Y</a>
         <a href="#">Solar Roof</a>
         <a href="#">Solar Panels</a>
       </Menu>
@@ -75,7 +74,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 10px;
   top: 0;
   left: 0;
   right: 0;
@@ -86,6 +85,8 @@ const Container = styled.div`
 
 const Logo = styled.div`
   cursor: pointer;
+  width: 230px;
+
   img {
     height: 16px;
     width: 130px;
@@ -94,20 +95,20 @@ const Logo = styled.div`
 
 const Menu = styled.div`
   display: flex;
-  width: 650px;
+  width: 580px;
   align-items: center;
   justify-content: space-between;
   
   a {
     font-weight: 500;
-    padding: 8px 15px;
     flex-wrap: nowrap;
     border-radius: 12px;
     background-color: transparent;
     transition: ease-in-out 0.45s;
+    padding: 10px 12px;
     
     &:hover {
-      background-color: rgba(80, 80, 80, 0.2);
+      background-color: rgba(80, 80, 80, 0.1);
     }
   }
 
