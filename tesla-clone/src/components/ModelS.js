@@ -140,7 +140,7 @@ const Stats = styled.div`
 
 const FadeTop = styled.div`
     width: 150%;
-    height: 10vh;
+    height: 12vh;
     background-color: black;
     filter: drop-shadow(0 -40px 22px black);
 `

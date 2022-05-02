@@ -64,7 +64,7 @@ const ItemText = styled.div`
 
     h1 {
         font-weight: 500;
-        font-size: 45px;
+        font-size: 42px;
         padding-bottom: 10px;
     }
 
