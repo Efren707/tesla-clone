@@ -19,8 +19,8 @@ function Header() {
       <Menu>
         <a href="models" >Model S</a>
         <a href="model3" >Model 3</a>
-        <a href="#" >Model X</a>
-        <a href="#" >Model Y</a>
+        <a href="modelx" >Model X</a>
+        <a href="modely" >Model Y</a>
         <a href="#">Solar Roof</a>
         <a href="#">Solar Panels</a>
       </Menu>

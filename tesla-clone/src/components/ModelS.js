@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 
-function ModelS() {
+function ModelSX({title, bgimg, range, zerotosixty, topSpeed, hp}) {
   return (
     <Container>
 
-        <ModelSSection>
+        <ModelSection bgimg={bgimg}>
             <Fade bottom>
                 <Title>
-                    <h1>Model S</h1>
+                    <h1>{title}</h1>
                     <span>Plaid</span>
                 </Title>
             </Fade>
@@ -17,22 +17,22 @@ function ModelS() {
             <Details>
                 <Fade left>
                     <Stats>
-                        <h2>396 mi</h2>
+                        <h2>{range} mi</h2>
                         <span>Range (EPA est.)</span>
                     </Stats>
 
                     <Stats>
-                        <h2>1.99 s</h2>
+                        <h2>{zerotosixty} s</h2>
                         <span>0-60 mph*</span>
                     </Stats>
 
                     <Stats>
-                        <h2>200 mph</h2>
+                        <h2>{topSpeed} mph</h2>
                         <span>Top Speed†</span>
                     </Stats>
                     
                     <Stats>
-                        <h2>1,020 hp</h2>
+                        <h2>{hp} hp</h2>
                         <span>Peak Power</span>
                     </Stats>
                     
@@ -43,7 +43,7 @@ function ModelS() {
                 </Fade>
             </Details>
 
-        </ModelSSection>
+        </ModelSection>
 
         <FadeTop/>
 
@@ -52,13 +52,13 @@ function ModelS() {
         </InteriorTitle>
 
         <InteriorSection/>
-            
+                    
 
     </Container>
   )
 }
 
-export default ModelS;
+export default ModelSX;
 
 const Container = styled.div`
     width: 100%;
@@ -67,13 +67,13 @@ const Container = styled.div`
     align-items: center;
 `
 
-const ModelSSection = styled.div`
+const ModelSection = styled.div`
     height: 100vh;
     width: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("/images/model-s.jpg");  
+    background-image: ${props => `url("/images/${props.bgimg}")`};  
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,16 +96,16 @@ const Title = styled.div`
 
 const Details = styled.div`
     display: flex;
-    width: 65%;
+    width: 60%;
     margin-top: 56vh;
-    justify-content: space-around;
+    justify-content: space-between;
 `
 
 const Stats = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 6px;
 
     h2 {
         color: white;
@@ -125,10 +125,10 @@ const Stats = styled.div`
         background-color: transparent;
         border: 3px solid white;
         border-radius: 20px;
-        font-size: 13px;
+        font-size: 12px;
         color: white;
         font-weight: 500;
-        padding: 10px 56px;
+        padding: 10px 54px;
         cursor: pointer;
 
         &:hover {
@@ -147,8 +147,7 @@ const FadeTop = styled.div`
 
 const InteriorTitle = styled.div`
     height: 10vh;
-    width: 150%;
-    padding: 0 100px;
+    width: 170%;
     background-color: black;
     display: flex;
     align-items: center;
@@ -162,6 +161,6 @@ const InteriorTitle = styled.div`
     }
 `
 
- const InteriorSection = styled(ModelSSection)`
+ const InteriorSection = styled(ModelSection)`
     background-image: url("/images/new-interior.jpg");
 `
