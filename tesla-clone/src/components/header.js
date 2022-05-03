@@ -78,7 +78,7 @@ const Container = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 90;
   font-size: 14px;
   letter-spacing: 0.7px;
 `
@@ -168,7 +168,6 @@ const DropdownNav = styled.ul`
 `
 
 const DropdownList = styled.div`
-
 `
 
 const Globe = styled.li`

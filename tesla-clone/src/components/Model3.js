@@ -1,10 +1,81 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
+import MessageIcon from '@material-ui/icons/Message';
+import CloseIcon from '@material-ui/icons/Close';
 
 function Model3Y({title, bgimg, range, stat}) {
+
+
+  const [dropStatus, setDropStatus] = useState(false);
+
   return (
     <Container>
+      
+      <Question>
+        <button onClick={() => setDropStatus(true)}><MessageIcon/></button>
+      </Question>
+
+      <QuestionDropdown show={true}>
+
+        <CloseWrapper>
+          <p></p>
+          <p>Question Center</p>
+          <CustomClose onClick={() => setDropStatus(false)}/>
+        </CloseWrapper>
+
+        <DropdownForm>
+
+          <FormHeader>
+            <h2>Chat With Us</h2>
+            <p>Provide your information</p>
+          </FormHeader>
+          
+          <FormBody>
+
+            <FormField>
+              <label>First name</label>
+              <input type="text"></input>
+            </FormField>
+
+            <FormField>
+              <label>Last name (Optional)</label>
+              <input type="text"></input>
+            </FormField>
+
+            <FormField>
+              <label>Email address</label>
+              <input type="text"></input>
+            </FormField>
+
+            <FormField>
+              <label>Phone</label>
+              <input type="text"></input>
+            </FormField>
+
+            <FormField>
+              <label>Zip code</label>
+              <input type="text"></input>
+            </FormField>
+
+            <FormField>
+              <label>Get Tesla updates</label>
+              <select form="updateform">
+                <option value="yes" selected>Yes</option>
+                <option value="no">No</option>
+              </select>
+            </FormField>
+
+            <FormSubmit>
+              <button>START CHAT</button>
+            </FormSubmit>
+          </FormBody>
+
+
+        </DropdownForm>
+
+        
+      </QuestionDropdown>
 
       <ModelSection bgimg={bgimg}>
         <Fade bottom>
@@ -43,48 +114,47 @@ function Model3Y({title, bgimg, range, stat}) {
 
       <Safety>
 
-        
-          <SafetyImg>
-            <Fade bottom>
-              <img src="/images/safety.png" alt="Safety" />
-            </Fade>
-          </SafetyImg>
-        
+        <SafetyImg>
+          <Fade bottom>
+            <img src="/images/safety.png" alt="Safety" />
+          </Fade>
+        </SafetyImg>
+      
 
-          <SafetyInfo>
-            <Fade bottom>
-              <SafetyText>
-                <h3>Safety</h3>
-                <h1>Built for Safety</h1>
+        <SafetyInfo>
+          <Fade bottom>
+            <SafetyText>
+              <h3>Safety</h3>
+              <h1>Built for Safety</h1>
 
-                <p> 
-                  Safety is the most important part of every Tesla. We design our vehicles 
-                  to <span>exceed safety standards</span>.
-                </p>
+              <p> 
+                Safety is the most important part of every Tesla. We design our vehicles 
+                to <span>exceed safety standards</span>.
+              </p>
 
-                <h2>5-Star Rating</h2>
-                <p>
-                  Model 3 achieved NHTSA 5-star safety ratings in every category and subcategory.
-                </p>
+              <h2>5-Star Rating</h2>
+              <p>
+                Model 3 achieved NHTSA 5-star safety ratings in every category and subcategory.
+              </p>
 
-                <h2>Top Safety Pick+</h2>
-                <p>
-                  Model 3 received the IIHS Top Safety Pick+ award, with top ratings in all 
-                  crashworthiness and front crash prevention categories.
-                </p>
-              </SafetyText>
+              <h2>Top Safety Pick+</h2>
+              <p>
+                Model 3 received the IIHS Top Safety Pick+ award, with top ratings in all 
+                crashworthiness and front crash prevention categories.
+              </p>
+            </SafetyText>
 
-              <SafetyBtns>
-                <PlusBtn>
-                  <button>+</button> <span>LEARN MORE</span>
-                </PlusBtn>
+            <SafetyBtns>
+              <PlusBtn>
+                <button>+</button> <span>LEARN MORE</span>
+              </PlusBtn>
 
-                <OrderBtn>
-                  <button>ORDER NOW</button>
-                </OrderBtn>
-              </SafetyBtns>
-            </Fade>
-          </SafetyInfo>
+              <OrderBtn>
+                <button>ORDER NOW</button>
+              </OrderBtn>
+            </SafetyBtns>
+          </Fade>
+        </SafetyInfo>
         
 
       </Safety>                    
@@ -96,37 +166,84 @@ function Model3Y({title, bgimg, range, stat}) {
 export default Model3Y;
 
 const Container = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const Question = styled.div`
+  position: fixed;
+  bottom: 11vh;
+  right: 1.5vw;
+  z-index: 10;
+  
+  button {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    background: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+`
+
+const QuestionDropdown = styled.div`
+  display: ${props => props.show ? 'block' : 'none' };
+  height: 88vh;
+  width: 420px;
+  background-color: white;
+  border-radius: 12px;
+  position: fixed;
+  bottom: 3vh;
+  right: 1.5vw;
+  z-index: 10;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+`
+
+const CloseWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+  p {
+    padding-top: 5px;
+    font-weight: 500;
+    font-size: 14.5px;
+    color: #121314;
+  }
+`
+
+const CustomClose = styled(CloseIcon)`
+  cursor: pointer;
 `
 
 const ModelSection = styled.div`
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: ${props => `url("/images/${props.bgimg}")`};  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: ${props => `url("/images/${props.bgimg}")`};  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const Title = styled.div`
-    padding-top: 17vh;
+  padding-top: 17vh;
 
-    h1 {
-        font-weight: 500;
-        font-size: 40px;
-        padding-bottom: 10px;
-    }
+  h1 {
+      font-weight: 500;
+      font-size: 40px;
+      padding-bottom: 10px;
+  }
 
-    span {
-        font-size: 18px;
-        font-weight: 400;
-    }
+  span {
+      font-size: 18px;
+      font-weight: 400;
+  }
 `
 
 const Details = styled.div`
@@ -281,7 +398,7 @@ const PlusBtn = styled.div`
 `
 
 const OrderBtn = styled.div`
-   button {
+  button {
     background-color: transparent;
     border: 3px solid black;
     border-radius: 20px;
@@ -295,5 +412,83 @@ const OrderBtn = styled.div`
       background-color: black;
       color: white;
     }
+  }
+`
+
+const DropdownForm = styled.div`
+  text-align: left;
+  padding-left: 25px;
+  height: 80vh;
+  overflow-y: scroll;
+  
+`
+
+const FormHeader = styled.div`
+  padding-top: 20px;
+  
+  h2 {
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+
+  p {
+    font-weight: 400;
+    color: #3f3f3f;
+  }
+`
+
+const FormBody = styled.div`
+  padding: 20px 0;
+`
+
+const FormField = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  
+  label {
+    font-weight: 500;
+    color: #5f5f5f;
+    font-size: 16px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+  }
+
+  input {
+    width: 90%;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #f5f5f5;
+  }
+
+  select {
+    width: 90%;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #f5f5f5;
+    padding-left: 10px;
+    font-weight: 500;
+    border-right: 16px solid transparent;
+
+    option {
+      width: 20%;
+      font-weight: 500;
+    }
+  }
+`
+
+const FormSubmit = styled.div`
+  padding-top: 10px;
+  
+  button {
+    width: 90%;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #91b2ff;
+    font-weight: 500;
+    color: white;
   }
 `
