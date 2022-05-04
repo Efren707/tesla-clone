@@ -4,10 +4,22 @@ import Fade from 'react-reveal/Fade';
 import MessageIcon from '@material-ui/icons/Message';
 import CloseIcon from '@material-ui/icons/Close';
 
+import {Formik} from 'formik';
+import * as Yup from 'yup';
+import Validator from 'email-validator';
+
 function Model3Y({title, bgimg, range, stat}) {
 
-
   const [dropStatus, setDropStatus] = useState(false);
+
+  const QuestionFormSchema = Yup.object().shape({
+    firstName: Yup.string().required('First Name is required'),
+    lastName: Yup.string(),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    phoneNum: Yup.string().required('Phone Number is required'),
+    zipCode: Yup.string().required('Zip Code is required'),
+    receiveUpdates: Yup.string().required(),
+  })
 
   return (
     <Container>
@@ -16,7 +28,7 @@ function Model3Y({title, bgimg, range, stat}) {
         <button onClick={() => setDropStatus(true)}><MessageIcon/></button>
       </Question>
 
-      <QuestionDropdown show={true}>
+      <QuestionDropdown show={dropStatus}>
 
         <CloseWrapper>
           <p></p>
@@ -31,46 +43,56 @@ function Model3Y({title, bgimg, range, stat}) {
             <p>Provide your information</p>
           </FormHeader>
           
-          <FormBody>
+          
+          <Formik
+            initialValues={{firstName: '', lastName: '', email: '', phoneNum: '', zipCode: '', receiveUpdates: ''}}
+            onSubmit={values => {
+              console.log(values)
+            }}
+            validationSchema={QuestionFormSchema}
+            validateOnMount={true}
+          >
+            {({handleChange, handleBlur, handleSubmit, values, isValid}) => (
+              <FormBody>
+                <FormField>
+                  <label>First name</label>
+                  <input type="text"></input>
+                </FormField>
 
-            <FormField>
-              <label>First name</label>
-              <input type="text"></input>
-            </FormField>
+                <FormField>
+                  <label>Last name (Optional)</label>
+                  <input type="text"></input>
+                </FormField>
 
-            <FormField>
-              <label>Last name (Optional)</label>
-              <input type="text"></input>
-            </FormField>
+                <FormField>
+                  <label>Email address</label>
+                  <input type="text"></input>
+                </FormField>
 
-            <FormField>
-              <label>Email address</label>
-              <input type="text"></input>
-            </FormField>
+                <FormField>
+                  <label>Phone</label>
+                  <input type="text"></input>
+                </FormField>
 
-            <FormField>
-              <label>Phone</label>
-              <input type="text"></input>
-            </FormField>
+                <FormField>
+                  <label>Zip code</label>
+                  <input type="text"></input>
+                </FormField>
 
-            <FormField>
-              <label>Zip code</label>
-              <input type="text"></input>
-            </FormField>
+                <FormField>
+                  <label>Get Tesla updates</label>
+                  <select>
+                    <option value="yes" selected>Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </FormField>
 
-            <FormField>
-              <label>Get Tesla updates</label>
-              <select form="updateform">
-                <option value="yes" selected>Yes</option>
-                <option value="no">No</option>
-              </select>
-            </FormField>
-
-            <FormSubmit>
-              <button>START CHAT</button>
-            </FormSubmit>
-          </FormBody>
-
+                <FormSubmit>
+                  <button>START CHAT</button>
+                </FormSubmit>
+              </FormBody>
+            )}
+          </Formik>
 
         </DropdownForm>
 
@@ -460,6 +482,10 @@ const FormField = styled.div`
     border-radius: 20px;
     border: none;
     background-color: #f5f5f5;
+    padding-left: 15px;
+    font-weight: 500;
+    color: #121314;
+    font-size: 15px;
   }
 
   select {
@@ -481,7 +507,7 @@ const FormField = styled.div`
 
 const FormSubmit = styled.div`
   padding-top: 10px;
-  
+
   button {
     width: 90%;
     height: 40px;
