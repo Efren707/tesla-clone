@@ -140,7 +140,7 @@ function Model3Y({title, bgimg, range, stat}) {
                   </select>
                 </FormField>
 
-                <FormSubmit valid={isValid}>
+                <FormSubmit valid={isValid && (values.zipCode.length === 5 && validZip(values.zipCode)) && (values.phoneNum.length > 9 && validNumber(values.phoneNum))}>
                   <button type="submit" onClick={handleSubmit}>START CHAT</button>
                 </FormSubmit>
               </FormBody>
