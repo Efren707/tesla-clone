@@ -21,6 +21,34 @@ function Model3Y({title, bgimg, range, stat}) {
     receiveUpdates: Yup.string().required(),
   })
 
+  const validNumber = (number) => {
+
+    let res = true;
+    let nums =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    for (let i = 0; i < number.length; i++) {
+      if (!nums.includes(number[i])) {
+        res = false;
+      }
+    }
+
+    return res;
+  }
+
+  const validZip = (zip) => {
+
+    let res = true;
+    let nums =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    for (let i = 0; i < zip.length; i++) {
+      if (!nums.includes(zip[i])) {
+        res = false;
+      }
+    }
+
+    return res;
+  }
+
   return (
     <Container>
       
@@ -45,7 +73,7 @@ function Model3Y({title, bgimg, range, stat}) {
           
           
           <Formik
-            initialValues={{firstName: '', lastName: '', email: '', phoneNum: '', zipCode: '', receiveUpdates: ''}}
+            initialValues={{firstName: '', lastName: '', email: '', phoneNum: '', zipCode: '', receiveUpdates: 'Yes'}}
             onSubmit={values => {
               console.log(values)
             }}
@@ -54,41 +82,66 @@ function Model3Y({title, bgimg, range, stat}) {
           >
             {({handleChange, handleBlur, handleSubmit, values, isValid}) => (
               <FormBody>
-                <FormField>
+                <FormField validInput={values.firstName.length < 1 || values.firstName.length >= 1}> 
                   <label>First name</label>
-                  <input type="text"></input>
+                  <input type="text"
+                    onChange={handleChange('firstName')}
+                    onBlur={handleBlur('firstName')}
+                    value={values.firstName}
+                  ></input>
                 </FormField>
 
-                <FormField>
+                <FormField validInput={true}>
                   <label>Last name (Optional)</label>
-                  <input type="text"></input>
+                  <input type="text"
+                    onChange={handleChange('lastName')}
+                    onBlur={handleBlur('lastName')}
+                    value={values.lastName}
+                  ></input>
                 </FormField>
 
-                <FormField>
+                <FormField validInput={values.email.length < 1|| Validator.validate(values.email)}>
                   <label>Email address</label>
-                  <input type="text"></input>
+                  <input type="text"
+                    onChange={handleChange('email')}
+                    onBlur={handleBlur('email')}
+                    value={values.email}
+                    
+                  ></input>
                 </FormField>
 
-                <FormField>
+                <FormField validInput={values.phoneNum.length < 1 || (values.phoneNum.length > 9 && validNumber(values.phoneNum))}>
                   <label>Phone</label>
-                  <input type="text"></input>
+                  <input type="text"
+                    onChange={handleChange('phoneNum')}
+                    onBlur={handleBlur('phoneNum')}
+                    value={values.phoneNum}
+                  ></input>
                 </FormField>
 
-                <FormField>
+                <FormField validInput={values.zipCode.length < 1 || (values.zipCode.length === 5 && validZip(values.zipCode))}>
                   <label>Zip code</label>
-                  <input type="text"></input>
+                  <input type="text"
+                    onChange={handleChange('zipCode')}
+                    onBlur={handleBlur('zipCode')}
+                    value={values.zipCode}
+                  ></input>
                 </FormField>
 
                 <FormField>
                   <label>Get Tesla updates</label>
-                  <select>
-                    <option value="yes" selected>Yes</option>
+                  <select
+                    onChange={handleChange('receiveUpdates')}
+                    onBlur={handleBlur('receiveUpdates')}
+                    value={values.receiveUpdates}
+                  >
+                    <option value="yes">Yes</option>
                     <option value="no">No</option>
                   </select>
                 </FormField>
 
-                <FormSubmit>
-                  <button>START CHAT</button>
+                <FormSubmit valid={isValid}>
+                  <button type="submit" onClick={handleSubmit}>START CHAT</button>
                 </FormSubmit>
               </FormBody>
             )}
@@ -480,12 +533,16 @@ const FormField = styled.div`
     width: 90%;
     height: 40px;
     border-radius: 20px;
-    border: none;
+    border: ${props => props.validInput ? 'none' : '1px solid red'};
     background-color: #f5f5f5;
     padding-left: 15px;
     font-weight: 500;
     color: #121314;
     font-size: 15px;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   select {
@@ -513,8 +570,9 @@ const FormSubmit = styled.div`
     height: 40px;
     border-radius: 20px;
     border: none;
-    background-color: #91b2ff;
+    background-color: ${props => props.valid ? '#326aed' : '#91b2ff'};
     font-weight: 500;
     color: white;
+    cursor: pointer;
   }
 `
