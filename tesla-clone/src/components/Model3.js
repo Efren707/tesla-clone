@@ -32,7 +32,7 @@ function Model3Y({title, bgimg, range, stat}) {
       }
     }
 
-    return res;
+    return res && number.length === 9;
   }
 
   const validZip = (zip) => {
@@ -46,7 +46,7 @@ function Model3Y({title, bgimg, range, stat}) {
       }
     }
 
-    return res;
+    return res && zip.length === 5;
   }
 
   return (
@@ -76,6 +76,8 @@ function Model3Y({title, bgimg, range, stat}) {
             initialValues={{firstName: '', lastName: '', email: '', phoneNum: '', zipCode: '', receiveUpdates: 'Yes'}}
             onSubmit={values => {
               console.log(values)
+              
+              setDropStatus(false)
             }}
             validationSchema={QuestionFormSchema}
             validateOnMount={true}
@@ -100,17 +102,16 @@ function Model3Y({title, bgimg, range, stat}) {
                   ></input>
                 </FormField>
 
-                <FormField validInput={values.email.length < 1|| Validator.validate(values.email)}>
+                <FormField validInput={values.email.length < 1 || Validator.validate(values.email)}>
                   <label>Email address</label>
                   <input type="text"
                     onChange={handleChange('email')}
                     onBlur={handleBlur('email')}
                     value={values.email}
-                    
                   ></input>
                 </FormField>
 
-                <FormField validInput={values.phoneNum.length < 1 || (values.phoneNum.length > 9 && validNumber(values.phoneNum))}>
+                <FormField validInput={values.phoneNum.length < 1 || validNumber(values.phoneNum)}>
                   <label>Phone</label>
                   <input type="text"
                     onChange={handleChange('phoneNum')}
@@ -119,7 +120,7 @@ function Model3Y({title, bgimg, range, stat}) {
                   ></input>
                 </FormField>
 
-                <FormField validInput={values.zipCode.length < 1 || (values.zipCode.length === 5 && validZip(values.zipCode))}>
+                <FormField validInput={values.zipCode.length < 1 || validZip(values.zipCode)}>
                   <label>Zip code</label>
                   <input type="text"
                     onChange={handleChange('zipCode')}
@@ -140,7 +141,7 @@ function Model3Y({title, bgimg, range, stat}) {
                   </select>
                 </FormField>
 
-                <FormSubmit valid={isValid && (values.zipCode.length === 5 && validZip(values.zipCode)) && (values.phoneNum.length > 9 && validNumber(values.phoneNum))}>
+                <FormSubmit valid={isValid && Validator.validate(values.email) && validZip(values.zipCode) && validNumber(values.phoneNum)}>
                   <button type="submit" onClick={handleSubmit}>START CHAT</button>
                 </FormSubmit>
               </FormBody>
@@ -274,7 +275,7 @@ const QuestionDropdown = styled.div`
   bottom: 3vh;
   right: 1.5vw;
   z-index: 10;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
 `
 
 const CloseWrapper = styled.div`
@@ -513,7 +514,8 @@ const FormHeader = styled.div`
 `
 
 const FormBody = styled.div`
-  padding: 20px 0;
+  padding-bottom: 20px;
+  padding-top: 50px;
 `
 
 const FormField = styled.div`
@@ -524,7 +526,7 @@ const FormField = styled.div`
   label {
     font-weight: 500;
     color: #5f5f5f;
-    font-size: 16px;
+    font-size: 15px;
     padding-left: 15px;
     padding-bottom: 10px;
   }

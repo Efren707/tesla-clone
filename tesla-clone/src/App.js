@@ -5,6 +5,7 @@ import Header from './components/header';
 import Home from './components/home';
 import ModelSX from './components/ModelS';
 import Model3Y from './components/Model3';
+import Navbar from './components/Navbar';
 
 function App() {
   return (

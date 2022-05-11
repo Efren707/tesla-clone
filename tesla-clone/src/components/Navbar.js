@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
 import LanguageIcon from '@material-ui/icons/Language';
 
-function Header() {
+function Navbar() {
 
   const [dropStatus, setDropStatus] = useState(false);
   
@@ -31,41 +31,17 @@ function Header() {
         <a onClick={() => setDropStatus(true)}>Menu</a>
       </RightMenu>
 
-      <DropdownNav show={dropStatus}>
-        
-        <CloseWrapper>
-          <CustomClose onClick={() => setDropStatus(false)}/>
-        </CloseWrapper>
-        
-        <DropdownList>
-          <li>Existing Inventory</li>
-          <li>Used Inventory</li>
-          <li>Trade-in</li>
-          <li>Test Drive</li>
-          <li>Insurance</li>
-          <li>Cybertruck</li>
-          <li>Roadster</li>
-          <li>Semi</li>
-          <li>Charging</li>
-          <li>Powerwall</li>
-          <li>Commercial Energy</li>
-          <li>Utilities</li>
-          <li>Find Us</li>
-          <li>Support</li>
-          <li>Investor Relations</li>
-          <Globe>
-            <GlobeImg/> 
-            <GlobeText>United States <span>English</span></GlobeText>
-          </Globe>
-        </DropdownList>
+      
 
-      </DropdownNav>
+      <DropdownContainer show={dropStatus}>
+        
+      </DropdownContainer>
     
     </Container>
   )
 }
 
-export default Header
+export default Navbar;
 
 const Container = styled.div`
   height: 60px;
@@ -208,4 +184,17 @@ const CloseWrapper = styled.div`
 
 const CustomClose = styled(CloseIcon)`
   cursor: pointer;
+` 
+
+const DropdownContainer = styled.div`
+  display: ${props => props.show ? 'block' : 'none' };
+  border: 1px solid red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
 `

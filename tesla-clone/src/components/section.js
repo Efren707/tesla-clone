@@ -119,5 +119,5 @@ const DownArrow = styled.img`
 `
 
 const Buttons = styled.div`
-
+    padding-bottom: 10px;
 `
