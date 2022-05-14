@@ -10,6 +10,9 @@ function section({title, description, backgroundImg, leftBtnText, rightBtnText})
         descriptionLink = "Touchless delivery";
     }
 
+    console.log(backgroundImg);
+    console.log(title);
+
     return (
         <Wrap bgImage={backgroundImg}>
             <Fade bottom>
@@ -35,7 +38,7 @@ function section({title, description, backgroundImg, leftBtnText, rightBtnText})
                 
                 </Fade>
 
-                <DownArrow src='/images/down-arrow.svg'/>
+                <DownArrow src='../images/down-arrow.svg'/>
                 
             </Buttons>
 
