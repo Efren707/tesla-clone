@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
+import interior from '../images/new-interior.jpg';
 
 function ModelSX({title, bgimg, range, zerotosixty, topSpeed, hp}) {
   return (
@@ -73,7 +74,7 @@ const ModelSection = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: ${props => `url("/images/${props.bgimg}")`};  
+    background-image: ${props => `url(${props.bgimg})`};  
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,5 +163,5 @@ const InteriorTitle = styled.div`
 `
 
  const InteriorSection = styled(ModelSection)`
-    background-image: url("/images/new-interior.jpg");
+    background-image: url(${interior});
 `

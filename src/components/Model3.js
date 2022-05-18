@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import MessageIcon from '@material-ui/icons/Message';
 import CloseIcon from '@material-ui/icons/Close';
+import safety from '../images/safety.png';
 
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -192,7 +193,7 @@ function Model3Y({title, bgimg, range, stat}) {
 
         <SafetyImg>
           <Fade bottom>
-            <img src="/images/safety.png" alt="Safety" />
+            <img src={safety} alt="Safety" />
           </Fade>
         </SafetyImg>
       
@@ -301,7 +302,7 @@ const ModelSection = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: ${props => `url("/images/${props.bgimg}")`};  
+  background-image: ${props => `url(${props.bgimg})`};  
   display: flex;
   flex-direction: column;
   align-items: center;
