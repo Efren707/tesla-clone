@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
 import LanguageIcon from '@material-ui/icons/Language';
+import LogoImg from '../images/logo.svg';
 
 function Header() {
 
@@ -12,7 +13,7 @@ function Header() {
 
       <Logo>
         <a href="/tesla-clone">
-          <img src="/images/logo.svg" alt="logo" />
+          <img src={LogoImg} alt="logo" />
         </a>
       </Logo>
 

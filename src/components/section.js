@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
+import arrow from '../images/down-arrow.svg';
 
 function section({title, description, backgroundImg, leftBtnText, rightBtnText}) {
 
@@ -9,9 +10,6 @@ function section({title, description, backgroundImg, leftBtnText, rightBtnText})
     if(description && description === "Order Online for ") {
         descriptionLink = "Touchless delivery";
     }
-
-    console.log(backgroundImg);
-    console.log(title);
 
     return (
         <Wrap bgImage={backgroundImg}>
@@ -38,8 +36,7 @@ function section({title, description, backgroundImg, leftBtnText, rightBtnText})
                 
                 </Fade>
 
-                <DownArrow src='../images/down-arrow.svg'/>
-                
+                <DownArrow src={arrow}/>
             </Buttons>
 
         </Wrap>
@@ -54,7 +51,7 @@ const Wrap = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: ${props => `url("/images/${props.bgImage}")`};
+    background-image: ${props => `url(${props.bgImage})`};
     display: flex;
     flex-direction: column;
     align-items: center;
