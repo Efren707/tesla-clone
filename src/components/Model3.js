@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import MessageIcon from '@material-ui/icons/Message';
 import CloseIcon from '@material-ui/icons/Close';
+import arrow from '../images/down-arrow.svg';
 import safety from '../images/safety.png';
 
 import {Formik} from 'formik';
@@ -185,7 +186,7 @@ function Model3Y({title, bgimg, range, stat}) {
           </Fade>
         </Details>
 
-        <DownArrow src='/images/down-arrow.svg'/>
+        <DownArrow src={arrow}/>
 
       </ModelSection>
 
