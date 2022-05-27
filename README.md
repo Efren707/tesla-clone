@@ -1,5 +1,5 @@
 # Tesla Clone
-This is a pixel perfect clone of the Tesla site. This app was built using JavaScript and React. You can view this app by visiting [https://efren707.github.io/tesla-clone/](https://react-heroku-tesla.herokuapp.com/tesla-clone)
+This is a pixel perfect clone of the Tesla site. This app was built using JavaScript and React. You can view this app by visiting https://react-heroku-tesla.herokuapp.com/tesla-clone
 
 ![image](https://user-images.githubusercontent.com/53492872/166849087-19fe2833-013f-4958-839d-aa1e63cdf6ca.png)
 
