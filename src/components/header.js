@@ -27,8 +27,8 @@ function Header() {
       </Menu>
 
       <RightMenu>
-        <a href="#">Shop</a>
-        <a href="#">Account</a>
+        <a href="/tesla-clone">Shop</a>
+        <a href="/tesla-clone">Account</a>
         <a onClick={() => setDropStatus(true)}>Menu</a>
       </RightMenu>
 
