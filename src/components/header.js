@@ -93,6 +93,11 @@ const Logo = styled.div`
     height: 16px;
     width: 130px;
   }
+
+  @media (max-width: 600px) {
+    width: 25%;
+    padding-left: 15px;
+  }
 `
 
 const Menu = styled.div`
@@ -133,6 +138,20 @@ const RightMenu = styled.div`
     transition: color .33s ease,background-color .33s ease;
     
     &:hover {
+      background-color: rgba(80, 80, 80, 0.1);
+    }
+
+  }
+
+  @media (max-width: 600px) {
+    width: 17.5%;
+
+    a {
+      display: none;
+    }
+
+    a:last-child {
+      display: block;
       background-color: rgba(80, 80, 80, 0.1);
     }
   }
