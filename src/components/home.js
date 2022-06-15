@@ -13,16 +13,16 @@ function home() {
   return (
     <Container>
 
-      <Section title="Model 3" description="Order Online for " backgroundImg={model3} 
-      leftBtnText="Custom order" rightBtnText="Existing inventory" />
-
-      <Section title="Model Y" description="Order Online for " backgroundImg={modelY} 
-      leftBtnText="Custom order" rightBtnText="Existing inventory" />
-        
       <Section title="Model S" description="Order Online for " backgroundImg={modelS} 
+      leftBtnText="Custom order" rightBtnText="Existing inventory" />
+      
+      <Section title="Model Y" description="Order Online for " backgroundImg={modelY} 
       leftBtnText="Custom order" rightBtnText="Existing inventory" />
 
       <Section title="Model X" description="Order Online for " backgroundImg={modelX} 
+      leftBtnText="Custom order" rightBtnText="Existing inventory" />
+
+      <Section title="Model 3" description="Order Online for " backgroundImg={model3} 
       leftBtnText="Custom order" rightBtnText="Existing inventory" />
       
       <Section title="Lowest Cost Solar Panels in America" description="Money back guaranteed" 

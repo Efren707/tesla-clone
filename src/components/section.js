@@ -56,6 +56,11 @@ const Wrap = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between; 
+
+    @media (max-width: 600px) {
+        height: 77vh;
+        background-size: auto 100%;
+    }
 `
 
 const ItemText = styled.div`
