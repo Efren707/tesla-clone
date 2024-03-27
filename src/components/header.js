@@ -29,7 +29,7 @@ function Header() {
       <RightMenu>
         <a href="/tesla-clone">Shop</a>
         <a href="/tesla-clone">Account</a>
-        <a onClick={() => setDropStatus(true)}>Menu</a>
+        <button onClick={() => setDropStatus(true)}>Menu</button>
       </RightMenu>
 
       <DropdownNav show={dropStatus}>
@@ -130,7 +130,11 @@ const RightMenu = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  a {
+  button {
+    all: unset;
+  }
+
+  button, a {
     font-weight: 500;
     padding: 8px 15px;
     flex-wrap: nowrap;
@@ -139,6 +143,7 @@ const RightMenu = styled.div`
     
     &:hover {
       background-color: rgba(80, 80, 80, 0.1);
+      cursor: pointer;
     }
 
   }
