@@ -12,23 +12,23 @@ function Header() {
     <Container>
 
       <Logo>
-        <a href="/tesla-clone">
+        <a href="/">
           <img src={LogoImg} alt="logo" />
         </a>
       </Logo>
 
       <Menu>
-        <a href="/tesla-clone/models" >Model S</a>
-        <a href="/tesla-clone/model3" >Model 3</a>
-        <a href="/tesla-clone/modelx" >Model X</a>
-        <a href="/tesla-clone/modely" >Model Y</a>
-        <a href="/tesla-clone">Solar Roof</a>
-        <a href="/tesla-clone">Solar Panels</a>
+        <a href="/models" >Model S</a>
+        <a href="/model3" >Model 3</a>
+        <a href="/modelx" >Model X</a>
+        <a href="/modely" >Model Y</a>
+        <a href="/">Solar Roof</a>
+        <a href="/">Solar Panels</a>
       </Menu>
 
       <RightMenu>
-        <a href="/tesla-clone">Shop</a>
-        <a href="/tesla-clone">Account</a>
+        <a href="/">Shop</a>
+        <a href="/">Account</a>
         <button onClick={() => setDropStatus(true)}>Menu</button>
       </RightMenu>
 
