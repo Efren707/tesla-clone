@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {HashRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import Header from './components/header';
 import Home from './components/home';
@@ -24,7 +24,7 @@ function App() {
 
           <Route path="/" element={<Home/>} />
 
-          <Route path="/models"element={<ModelSX title={"Model S"} bgimg={modelS} range={396} zerotosixty={1.99} topSpeed={200} hp={1020}/>} />
+          <Route path="/models" element={<ModelSX title={"Model S"} bgimg={modelS} range={396} zerotosixty={1.99} topSpeed={200} hp={1020}/>} />
           
           <Route path="/modelx" element={<ModelSX title={"Model X"} bgimg={modelX} range={333} zerotosixty={2.5} topSpeed={155} hp={1020} />} />
           
