@@ -1,7 +1,7 @@
 {
   "name": "tesla-clone",
   "version": "0.1.0",
-  "homepage": "https://Efren707.github.io/tesla-clone",
+  "homepage": "",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
