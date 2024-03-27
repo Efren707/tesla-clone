@@ -22,7 +22,7 @@ function App() {
         
         <Routes>
 
-          <Route path="/tesla-clone" element={<Home />} />
+          <Route path="/" element={<Home/>} />
 
           <Route path="/tesla-clone/models"element={<ModelSX title={"Model S"} bgimg={modelS} range={396} zerotosixty={1.99} topSpeed={200} hp={1020}/>} />
           
