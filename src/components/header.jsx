@@ -94,9 +94,8 @@ const Logo = styled.div`
     width: 130px;
   }
 
-  @media (max-width: 600px) {
-    width: 25%;
-    padding-left: 15px;
+  @media (max-width: 600px) {    
+    display: flex;
   }
 `
 
@@ -178,6 +177,10 @@ const DropdownNav = styled.ul`
   text-align: left;
   transform: ${props => props.show ? 'translateX(0)' : 'translateX(100%)' };
   transition: transform 0.5s;
+
+  @media (max-width: 600px) {    
+    height: 100dvh;
+  }
   
   li {
     margin: 5px;
@@ -195,6 +198,11 @@ const DropdownNav = styled.ul`
 `
 
 const DropdownList = styled.div` 
+  overflow: scroll;
+  
+  @media (max-width: 600px) {    
+    height: 100dvh;
+  }
 `
 
 const Globe = styled.li`

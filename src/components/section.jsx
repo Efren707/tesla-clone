@@ -58,7 +58,7 @@ const Wrap = styled.div`
     justify-content: space-between; 
 
     @media (max-width: 600px) {
-        height: 77vh;
+        height: 100dvh;
         background-size: auto 100%;
     }
 `
